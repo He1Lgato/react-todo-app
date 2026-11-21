@@ -1,10 +1,15 @@
 # TodoApp
 
+リンク: https://he1lgato.github.io/react-todo-app/
+
 React、TypeScript、Tailwind CSS を使用し、ローカルストレージでデータを永続化した「Todoアプリ」です。
 
 ## 開発履歴
 
 - 2026年10月16日：プロジェクト開始
+- 11月21日：ver1完成
+
+開発期間：20時間
 
 ## ライセンス
 
