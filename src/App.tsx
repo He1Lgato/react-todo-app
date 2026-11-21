@@ -4,6 +4,7 @@ import type { Todo } from "./types";
 import { initTodos } from "./initTodos";
 import WelcomeMessage from "./WelcomeMessage";
 import TodoList from "./TodoList";
+import Calendar from "./Calendar";
 import { v4 as uuid } from "uuid";
 import { twMerge } from "tailwind-merge";
 import dayjs from "dayjs";
@@ -235,39 +236,69 @@ const App = () => {
     setAddTodoStep("closed");
     setIsAddTodoFadingIn(false);
   };
+
+  const openAddTodo = () => {
+    setIsAddTodoFadingIn(false);
+    setAddTodoStep("form-fading-in");
+  };
+
   return (
     <>
       <TriangleBackground />
-      <h1 className="fixed top-4 left-4 z-0 text-2xl font-bold">TodoApp</h1>
-      <Menu isInert={isBackgroundBlurred} />
+      <Menu isInert={isBackgroundBlurred} placement="top" />
+      <Menu isInert={isBackgroundBlurred} placement="bottom">
+        <div className="flex min-h-0 flex-1 flex-col">
+          <div className="min-h-0 flex-1 overflow-y-auto">
+            <TodoList
+              todos={todos}
+              updateIsDone={updateIsDone}
+              remove={remove}
+            />
+          </div>
+          <div className="shrink-0 border-t border-cyan-200 pt-3">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={removeCompletedTodos}
+                disabled={completedCount === 0}
+                className={twMerge(
+                  "min-w-0 flex-1 cursor-pointer rounded-md border border-red-500 bg-white px-3 py-1 font-medium text-red-500",
+                  "hover:bg-red-50",
+                  "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white",
+                )}
+              >
+                完了済みのタスクを削除
+              </button>
+              <button
+                type="button"
+                onClick={openAddTodo}
+                className="shrink-0 cursor-pointer whitespace-nowrap rounded-md bg-indigo-500 px-3 py-1 font-bold text-white hover:bg-indigo-600"
+              >
+                タスクの追加
+              </button>
+            </div>
+          </div>
+        </div>
+      </Menu>
+      <header className="px-4 pt-10">
+        <h1 className="text-2xl font-bold">TodoApp</h1>
+      </header>
       <main
-        className="mx-auto w-full max-w-2xl px-4 py-10"
+        className="mx-auto w-full max-w-2xl px-4 pt-4 pb-10"
         inert={isWelcomeVisible || isAddTodoOpen}
       >
         <button
           type="button"
-          onClick={() => {
-            setIsAddTodoFadingIn(false);
-            setAddTodoStep("form-fading-in");
-          }}
+          onClick={openAddTodo}
           className="mb-4 cursor-pointer rounded-md bg-indigo-500 px-3 py-1 font-bold text-white hover:bg-indigo-600"
         >
           タスクの追加
         </button>
-        <TodoList todos={todos} updateIsDone={updateIsDone} remove={remove} />
-
-        <button
-          type="button"
-          onClick={removeCompletedTodos}
-          disabled={completedCount === 0}
-          className={twMerge(
-            "mt-4 cursor-pointer rounded-md border border-red-500 bg-white px-3 py-1 font-medium text-red-500",
-            "hover:bg-red-50",
-            "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white",
-          )}
-        >
-          完了済みのタスクを削除
-        </button>
+        <Calendar
+          todos={todos}
+          updateIsDone={updateIsDone}
+          remove={remove}
+        />
       </main>
       <div
         aria-hidden="true"
