@@ -246,7 +246,7 @@ const App = () => {
     <>
       <TriangleBackground />
       <Menu isInert={isBackgroundBlurred} placement="top" />
-      <Menu isInert={isBackgroundBlurred} placement="bottom">
+      <Menu isInert={isBackgroundBlurred} placement="right">
         <div className="flex min-h-0 flex-1 flex-col">
           <div className="min-h-0 flex-1 overflow-y-auto">
             <TodoList

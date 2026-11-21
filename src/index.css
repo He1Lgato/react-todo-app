@@ -3,5 +3,6 @@
 @layer base {
   body {
     @apply min-h-screen bg-black text-white;
+    font-family: "PUDShinMGoPr6N-Medium", sans-serif;
   }
 }
