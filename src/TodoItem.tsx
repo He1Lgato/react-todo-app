@@ -23,7 +23,7 @@ const TodoItem = (props: Props) => {
   const todo = props.todo;
 
   return (
-    <div className="flex items-center justify-between gap-3 rounded-md border border-slate-300 bg-white px-4 py-2 drop-shadow">
+    <div className="flex items-center justify-between gap-3 rounded-md border border-cyan-500 bg-white px-4 py-2 text-cyan-500 drop-shadow">
       <div
         className={twMerge(
           "flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1",
@@ -39,26 +39,26 @@ const TodoItem = (props: Props) => {
           />
           <FontAwesomeIcon
             icon={faPersonDigging}
-            className="mr-2 shrink-0 text-slate-500"
+            className="mr-2 shrink-0 text-cyan-500"
           />
-          <span className="min-w-0 text-lg font-medium wrap-anywhere text-slate-700">
+          <span className="min-w-0 text-lg font-medium wrap-anywhere text-cyan-500">
             {todo.name}
           </span>
         </label>
         <span
           aria-label={`優先度: ${todo.priority}`}
-          className="tracking-tighter text-orange-400"
+          className="tracking-tighter text-cyan-500"
         >
           {num2star(todo.priority)}
         </span>
         {todo.deadline && (
-          <span className="flex items-center text-sm text-slate-500">
+          <span className="flex items-center text-sm text-cyan-500">
             <FontAwesomeIcon icon={faClock} className="mr-0.5" />
             {formattedDate(todo.deadline)}
           </span>
         )}
         {todo.isDone && (
-          <span className="rounded-full bg-slate-800 px-3 py-0.5 text-xs font-medium text-white">
+          <span className="rounded-full border border-cyan-500 bg-cyan-50 px-3 py-0.5 text-xs font-medium text-cyan-600">
             完了済み
           </span>
         )}
@@ -68,8 +68,8 @@ const TodoItem = (props: Props) => {
         onClick={() => props.remove(todo.id)}
         aria-label={`${todo.name}を削除`}
         className={twMerge(
-          "shrink-0 cursor-pointer rounded-md px-2 py-1 text-sm font-bold",
-          "bg-rose-300 text-white hover:bg-rose-500",
+          "shrink-0 cursor-pointer rounded-md border border-red-500 bg-white px-2 py-1 text-sm font-bold text-red-500",
+          "hover:bg-red-50",
         )}
       >
         削除

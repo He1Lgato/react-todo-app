@@ -1,0 +1,48 @@
+.triangle-background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+
+  background: linear-gradient(180deg, #d5c9f3 0%, #b9dcf4 45%, #69d5e8 100%);
+}
+
+.triangle-background svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.triangle {
+  stroke: white;
+  stroke-opacity: 0.08;
+  stroke-width: 1;
+
+  animation-name: triangle-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes triangle-float {
+  0% {
+    opacity: 0.5;
+    transform: translate3d(0, 0, 0) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(var(--move-x), var(--move-y), 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .triangle {
+    animation: none;
+  }
+}
