@@ -2,7 +2,7 @@
 
 リンク: https://he1lgato.github.io/react-todo-app/
 
-React、TypeScript、Tailwind CSS を使用し、ローカルストレージでデータを永続化した「Todoアプリ」です。
+React，TypeScript，Tailwind CSS を使用し，ローカルストレージでデータを永続化した「Todoアプリ」です．
 
 ## 使用方法
 
